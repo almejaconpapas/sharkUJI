@@ -1,6 +1,5 @@
 package com.al396821.sharkuij
 
-import android.graphics.Path
 import com.jcamenatuji.sharkuji.model.Direction
 import kotlin.math.abs
 
@@ -12,7 +11,7 @@ internal class GestureDetector {
     private var xOrigin = 0f
     private var yOrigin = 0f
     private var detecting = false
-    var direction: Path.Direction = Path.Direction.RIGHT
+    var direction: Direction = Direction.RIGHT
         private set
 
     fun onTouchDown(x: Float, y: Float) {
@@ -28,7 +27,7 @@ internal class GestureDetector {
             return Gestures.CLICK
         }
         if (abs(x - xOrigin) >= SWIPE_THRESHOLD && abs(y - yOrigin) <= SWIPE_MARGIN) {
-            direction = if (x < xOrigin) Path.Direction.LEFT else Path.Direction.RIGHT
+            direction = if (x < xOrigin) Direction.LEFT else Direction.RIGHT
             return Gestures.SWIPE
         }
         if (abs(y - yOrigin) >= SWIPE_THRESHOLD && abs(x - xOrigin) <= SWIPE_MARGIN) {
